@@ -1,7 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { FileText, MapPin, Calendar, Lock, RotateCcw, Check } from 'lucide-react';
-import DignifiedMugshot from './DignifiedMugshot';
-import { playSound } from '../utils/audio';
+import React, { useState, useEffect, useRef } from "react";
+import {
+  FileText,
+  MapPin,
+  Calendar,
+  Lock,
+  RotateCcw,
+  Check,
+} from "lucide-react";
+import DignifiedMugshot from "./DignifiedMugshot";
+import { playSound } from "../utils/audio";
 
 export default function EvidenceDossier({
   currentCase,
@@ -12,7 +19,7 @@ export default function EvidenceDossier({
   onResetCase,
   onAdvanceStageDev,
   evidenceFading = false,
-  soundEnabled = true
+  soundEnabled = true,
 }) {
   const isIdentityRevealed = activeGameState.stageUnlocked >= 2;
 
@@ -58,18 +65,20 @@ export default function EvidenceDossier({
             <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#1A1917] tracking-tight">
               {isIdentityRevealed
                 ? currentCase.title
-                : 'In the Matter of the Sealed Grand Jury Indictment'}
+                : "In the Matter of the Sealed Grand Jury Indictment"}
             </h2>
             <p className="text-xs font-serif text-[#6E6354] italic mt-1">
               {isIdentityRevealed
                 ? currentCase.stage2.location
-                : 'Stage I: Initial visual booking evaluation — assess the charges and record'}
+                : "Stage I: Initial visual booking evaluation — assess the charges and record"}
             </p>
           </div>
 
           <div className="flex items-center gap-3">
             <div className="text-right">
-              <div className="text-[10px] font-serif uppercase tracking-[0.16em] text-[#8C7D6B]">Deliberation</div>
+              <div className="text-[10px] font-serif uppercase tracking-[0.16em] text-[#8C7D6B]">
+                Deliberation
+              </div>
               <div className="text-sm font-serif font-bold text-[#1A1917]">
                 Round {activeGameState.guesses.length} of 5
               </div>
@@ -98,30 +107,34 @@ export default function EvidenceDossier({
                   key={st.num}
                   onClick={() => {
                     if (activeClueTab !== st.num) {
-                      playSound('pageTurn', soundEnabled);
+                      playSound("pageTurn", soundEnabled);
                     }
                     setActiveClueTab(st.num);
                   }}
                   className={`group relative p-[1px] text-left transition-all duration-300 ease-out cursor-pointer min-h-[96px] ${
                     isCurrentView
-                      ? 'bg-[#8B261D] -translate-y-1.5'
-                      : 'bg-[#DDD5C7] translate-y-0 hover:bg-[#BFA77F] hover:-translate-y-0.5'
-                  } ${isNewlyUnlocked ? 'animate-extract' : ''}`}
+                      ? "bg-[#8B261D] -translate-y-1.5"
+                      : "bg-[#DDD5C7] translate-y-0 hover:bg-[#BFA77F] hover:-translate-y-0.5"
+                  } ${isNewlyUnlocked ? "animate-extract" : ""}`}
                   style={{
-                    clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 0 100%)',
+                    clipPath:
+                      "polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 0 100%)",
                     filter: isCurrentView
-                      ? 'drop-shadow(0 6px 14px rgba(139,38,29,0.18))'
-                      : 'drop-shadow(0 2px 4px rgba(28,25,23,0.06))'
+                      ? "drop-shadow(0 6px 14px rgba(139,38,29,0.18))"
+                      : "drop-shadow(0 2px 4px rgba(28,25,23,0.06))",
                   }}
                   title={`View Exhibit ${st.roman}: ${st.title}`}
                 >
                   {/* Inner Parchment Surface - clipped to create an exact 1px border along all 5 edges */}
                   <div
                     className={`w-full h-full p-2 sm:p-2.5 flex flex-col justify-between transition-colors ${
-                      isCurrentView ? 'bg-[#FFFDF9]' : 'bg-[#FAF8F5] group-hover:bg-[#FFFDF9]'
+                      isCurrentView
+                        ? "bg-[#FFFDF9]"
+                        : "bg-[#FAF8F5] group-hover:bg-[#FFFDF9]"
                     }`}
                     style={{
-                      clipPath: 'polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%)'
+                      clipPath:
+                        "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%)",
                     }}
                   >
                     {/* The Folded Corner Flap attached along the 45-degree crease */}
@@ -129,7 +142,7 @@ export default function EvidenceDossier({
                       <svg className="w-full h-full" viewBox="0 0 15 15">
                         <polygon
                           points="0,0 15,15 0,15"
-                          fill={isCurrentView ? '#EDE4D6' : '#E5DDCF'}
+                          fill={isCurrentView ? "#EDE4D6" : "#E5DDCF"}
                           stroke="#C4B9AA"
                           strokeWidth="0.75"
                         />
@@ -140,7 +153,7 @@ export default function EvidenceDossier({
                     <div className="w-full pr-3">
                       <span
                         className={`text-[11px] sm:text-xs font-serif font-bold whitespace-nowrap tracking-wider block ${
-                          isCurrentView ? 'text-[#8B261D]' : 'text-[#1A1917]'
+                          isCurrentView ? "text-[#8B261D]" : "text-[#1A1917]"
                         }`}
                       >
                         EXHIBIT {st.roman}
@@ -177,7 +190,12 @@ export default function EvidenceDossier({
                   preserveAspectRatio="none"
                   viewBox="0 0 100 24"
                 >
-                  <polygon points="0,0 100,0 50,20" fill="#DDD4C2" stroke="#C4B8A2" strokeWidth="1" />
+                  <polygon
+                    points="0,0 100,0 50,20"
+                    fill="#DDD4C2"
+                    stroke="#C4B8A2"
+                    strokeWidth="1"
+                  />
                 </svg>
 
                 {/* Red Wax Seal Badge at Flap Apex */}
@@ -196,11 +214,6 @@ export default function EvidenceDossier({
                     </span>
                   </div>
                 </div>
-
-                {/* Bottom: Stage Unlock Hint */}
-                <div className="mt-1.5 pt-1 border-t border-[#D5C9B3] flex items-center justify-center text-[9px] font-serif italic text-[#7A6E5D] z-10">
-                  Stage {st.num} Clue
-                </div>
               </div>
             );
           })}
@@ -210,24 +223,26 @@ export default function EvidenceDossier({
       {/* Active Exhibit Evidence Card */}
       <div
         className={`bg-[#FAF8F5] border border-[#D5CDBD] p-6 sm:p-7 shadow-[0_2px_14px_rgba(28,25,23,0.04)] rounded-sm transition-all duration-400 ease-in-out ${
-          evidenceFading ? 'opacity-0 scale-[0.98]' : 'opacity-100 scale-100'
+          evidenceFading ? "opacity-0 scale-[0.98]" : "opacity-100 scale-100"
         }`}
       >
         <div className="flex items-center justify-between border-b border-[#E2DBD0] pb-3.5 mb-5">
           <div className="flex items-center gap-2.5">
             <FileText className="w-4 h-4 text-[#8B261D]" />
             <h3 className="text-xs font-serif uppercase tracking-[0.2em] font-bold text-[#8B261D]">
-              Court Record — Exhibit {stageDefinitions[activeClueTab - 1].roman}: {stageDefinitions[activeClueTab - 1].title}
+              Court Record — Exhibit {stageDefinitions[activeClueTab - 1].roman}
+              : {stageDefinitions[activeClueTab - 1].title}
             </h3>
           </div>
-          {activeGameState.stageUnlocked < 5 && activeGameState.status === 'playing' && (
-            <button
-              onClick={onAdvanceStageDev}
-              className="text-[11px] font-serif italic text-[#8C6D37] hover:text-[#8B261D] underline transition cursor-pointer"
-            >
-              Preview Next Clue Early (Dev Mode)
-            </button>
-          )}
+          {activeGameState.stageUnlocked < 5 &&
+            activeGameState.status === "playing" && (
+              <button
+                onClick={onAdvanceStageDev}
+                className="text-[11px] font-serif italic text-[#8C6D37] hover:text-[#8B261D] underline transition cursor-pointer"
+              >
+                Preview Next Clue Early (Dev Mode)
+              </button>
+            )}
         </div>
 
         {/* Stage 1: Pure Mugshot Photographic Evidence */}
@@ -242,7 +257,9 @@ export default function EvidenceDossier({
               <strong className="text-[#1A1917] font-semibold block mb-1">
                 Preliminary Arraignment Stage:
               </strong>
-              The defendant’s identity, charges, and venue remain sealed in Round I. Formulate your baseline sentencing judgment from the booking portrait and agency jurisdiction.
+              The defendant’s identity, charges, and venue remain sealed in
+              Round I. Formulate your baseline sentencing judgment from the
+              booking portrait and agency jurisdiction.
             </div>
           </div>
         )}
@@ -286,8 +303,14 @@ export default function EvidenceDossier({
                   <span>Judicial Dates</span>
                 </div>
                 <div className="text-xs font-serif text-[#3E372E] space-y-0.5">
-                  <div><strong>Arrest Date:</strong> {currentCase.stage2.arrestDate}</div>
-                  <div><strong>Sentencing Date:</strong> {currentCase.stage2.sentencingDate}</div>
+                  <div>
+                    <strong>Arrest Date:</strong>{" "}
+                    {currentCase.stage2.arrestDate}
+                  </div>
+                  <div>
+                    <strong>Sentencing Date:</strong>{" "}
+                    {currentCase.stage2.sentencingDate}
+                  </div>
                 </div>
               </div>
             </div>
@@ -358,16 +381,18 @@ export default function EvidenceDossier({
                   key={idx}
                   className="bg-[#FFFFFF] border border-[#E2DBD0] p-3.5 rounded-sm flex flex-wrap items-center justify-between gap-3"
                 >
-                  <span className="text-xs font-serif font-semibold text-[#1A1917]">{pl.count}</span>
+                  <span className="text-xs font-serif font-semibold text-[#1A1917]">
+                    {pl.count}
+                  </span>
                   <span
                     className={`px-2.5 py-0.5 rounded-sm text-xs font-serif border ${
-                      pl.badge === 'guilty'
-                        ? 'bg-[#FBEAE8] border-[#E8B8B3] text-[#8B261D]'
-                        : pl.badge === 'reduced'
-                        ? 'bg-[#FBF4E8] border-[#E8D4B0] text-[#7A5822]'
-                        : pl.badge === 'dismissed'
-                        ? 'bg-[#EBF2EC] border-[#BED6C3] text-[#2D5A3D]'
-                        : 'bg-[#F2EDE2] border-[#D5CDBD] text-[#5C5346]'
+                      pl.badge === "guilty"
+                        ? "bg-[#FBEAE8] border-[#E8B8B3] text-[#8B261D]"
+                        : pl.badge === "reduced"
+                          ? "bg-[#FBF4E8] border-[#E8D4B0] text-[#7A5822]"
+                          : pl.badge === "dismissed"
+                            ? "bg-[#EBF2EC] border-[#BED6C3] text-[#2D5A3D]"
+                            : "bg-[#F2EDE2] border-[#D5CDBD] text-[#5C5346]"
                     }`}
                   >
                     {pl.plea}
@@ -395,7 +420,9 @@ export default function EvidenceDossier({
                   className="bg-[#FFFFFF] border border-[#E2DBD0] p-3 rounded-sm flex items-center justify-between gap-3 text-xs font-serif"
                 >
                   <span className="font-bold text-[#8B261D]">{cv.count}</span>
-                  <span className="font-medium text-[#1A1917]">{cv.verdict}</span>
+                  <span className="font-medium text-[#1A1917]">
+                    {cv.verdict}
+                  </span>
                 </div>
               ))}
             </div>
@@ -405,41 +432,6 @@ export default function EvidenceDossier({
                 Statutory & Guidelines Scope:
               </strong>
               {currentCase.stage5.statutoryRange}
-            </div>
-          </div>
-        )}
-
-        {/* Summary of Unlocked Record */}
-        {activeGameState.stageUnlocked > 1 && (
-          <div className="mt-6 pt-5 border-t border-[#E2DBD0]">
-            <div className="text-[10px] font-serif uppercase tracking-[0.18em] text-[#8C7D6B] mb-2 font-semibold">
-              Summary of Unsealed Record:
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-serif">
-              {activeGameState.stageUnlocked >= 2 && (
-                <div className="bg-[#FFFFFF] border border-[#E2DBD0] p-2.5 rounded-sm">
-                  <span className="text-[#8C7D6B] block text-[9px] uppercase tracking-widest font-semibold">Exhibit II • Subject</span>
-                  <span className="text-[#1A1917] font-medium">{currentCase.stage2.defendantName}</span>
-                </div>
-              )}
-              {activeGameState.stageUnlocked >= 3 && (
-                <div className="bg-[#FFFFFF] border border-[#E2DBD0] p-2.5 rounded-sm">
-                  <span className="text-[#8C7D6B] block text-[9px] uppercase tracking-widest font-semibold">Exhibit III • Primary Count</span>
-                  <span className="text-[#1A1917] font-medium">{currentCase.stage3.charges[0].name}</span>
-                </div>
-              )}
-              {activeGameState.stageUnlocked >= 4 && (
-                <div className="bg-[#FFFFFF] border border-[#E2DBD0] p-2.5 rounded-sm">
-                  <span className="text-[#8C7D6B] block text-[9px] uppercase tracking-widest font-semibold">Exhibit IV • Primary Plea</span>
-                  <span className="text-[#1A1917] font-medium">{currentCase.stage4.pleas[0].plea}</span>
-                </div>
-              )}
-              {activeGameState.stageUnlocked >= 5 && (
-                <div className="bg-[#FFFFFF] border border-[#E2DBD0] p-2.5 rounded-sm">
-                  <span className="text-[#8C7D6B] block text-[9px] uppercase tracking-widest font-semibold">Exhibit V • Guidelines</span>
-                  <span className="text-[#1A1917] font-medium truncate block">{currentCase.stage5.statutoryRange}</span>
-                </div>
-              )}
             </div>
           </div>
         )}

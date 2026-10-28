@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  background-color: #F9F7F2;
+  color: #22201D;
+  font-family: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif;
+}
